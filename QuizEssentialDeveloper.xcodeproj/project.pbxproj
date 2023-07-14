@@ -15,6 +15,7 @@
 		76D409282A6031B900AE683D /* QuizEssentialDeveloperUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D409272A6031B900AE683D /* QuizEssentialDeveloperUITests.swift */; };
 		76D4092A2A6031B900AE683D /* QuizEssentialDeveloperUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D409292A6031B900AE683D /* QuizEssentialDeveloperUITestsLaunchTests.swift */; };
 		76D409372A60327100AE683D /* FlowTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D409362A60327100AE683D /* FlowTest.swift */; };
+		76D4093A2A6038BF00AE683D /* Flow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D409392A6038BF00AE683D /* Flow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		76D409272A6031B900AE683D /* QuizEssentialDeveloperUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizEssentialDeveloperUITests.swift; sourceTree = "<group>"; };
 		76D409292A6031B900AE683D /* QuizEssentialDeveloperUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizEssentialDeveloperUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		76D409362A60327100AE683D /* FlowTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowTest.swift; sourceTree = "<group>"; };
+		76D409392A6038BF00AE683D /* Flow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				76D4090E2A6031B800AE683D /* ContentView.swift */,
 				76D409102A6031B900AE683D /* Assets.xcassets */,
 				76D409122A6031B900AE683D /* Preview Content */,
+				76D409392A6038BF00AE683D /* Flow.swift */,
 			);
 			path = QuizEssentialDeveloper;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76D4093A2A6038BF00AE683D /* Flow.swift in Sources */,
 				76D4090F2A6031B800AE683D /* ContentView.swift in Sources */,
 				76D4090D2A6031B800AE683D /* QuizEssentialDeveloperApp.swift in Sources */,
 			);
