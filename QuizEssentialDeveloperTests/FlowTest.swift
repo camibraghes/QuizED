@@ -4,46 +4,39 @@ import XCTest
 @testable import QuizEssentialDeveloper
 
 class FlowTest: XCTestCase {
+    var router: RouterSpy!
+    
+    override func setUp() {
+        super.setUp()
+        router = RouterSpy()
+    }
     
     func testStartWithNoQuestionsDoesNotRouteToQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: [])
-        
-        sut.start()
-        
+        makeSUT(questions: []).start()
+                
         XCTAssertTrue(router.routedQuestions.isEmpty)
     }
     
     func testStartWithOneQuestionsRoutesToCorrectQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: ["Q1"])
-        
-        sut.start()
+        makeSUT(questions: ["Q1"]).start()
         
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
     
     func testStartWithOneQuestionsRoutesToCorrectQuestion2() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: ["Q2"])
-        
-        sut.start()
+        makeSUT(questions: ["Q2"]).start()
         
         XCTAssertEqual(router.routedQuestions, ["Q2"])
     }
     
     func testStartWithTwoQuestionsRoutesFirstQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: ["Q1" , "Q2"])
-        
-        sut.start()
-        
+        makeSUT(questions: ["Q1", "Q2"]).start()
+
         XCTAssertEqual(router.routedQuestions, ["Q1"])
     }
 
     func testStartTwiceWithTwoQuestionsRoutesToFirstQuestionTwice() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: ["Q1", "Q2"])
+        let sut = makeSUT(questions: ["Q1", "Q2"])
         
         sut.start()
         sut.start()
@@ -52,15 +45,31 @@ class FlowTest: XCTestCase {
     }
     
     func testStartAndAnswearFirstQuestionWithTwoQuestionsRoutesToSecondQuestion() {
-        let router = RouterSpy()
-        let sut = Flow(router: router, questions: ["Q1", "Q2"])
-        
+        let sut = makeSUT(questions: ["Q1", "Q2"])
         sut.start()
         
         router.answearCallBack("A1")
         
         XCTAssertEqual(router.routedQuestions, ["Q1", "Q2"])
     }
+    
+    func testStartAndAnswearFirstAndSecondQuestionWithThreeQuestionsRoutesToSecondAnsThirdQuestion() {
+        let sut = makeSUT(questions: ["Q1", "Q2", "Q3"])
+        sut.start()
+        
+        router.answearCallBack("A1")
+        router.answearCallBack("A2")
+        
+        XCTAssertEqual(router.routedQuestions, ["Q1", "Q2", "Q3"])
+    }
+    
+    // MARK: - Helpers
+    
+    func makeSUT(questions: [String]) -> Flow {
+        return Flow(router: router, questions: questions)
+    }
+    
+    // MARK: - Spies
     
     class RouterSpy: Router {
         var routedQuestions: [String] = []
